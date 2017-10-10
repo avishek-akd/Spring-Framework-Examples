@@ -1,0 +1,176 @@
+package com.avishek.spring;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.core.ResolvableType;
+
+public class Hello implements InitializingBean, BeanNameAware, BeanFactoryAware, ApplicationContextAware, DisposableBean ,XYZ {
+	
+	private int x; //C.I
+	private String str; //S.I
+	private String msg;
+	
+	private String bean_name;
+	
+		@Autowired
+	private A aobj;  //F.I
+		
+	private B bobj;  //S.I
+	
+	
+	private BeanFactory factory1;
+	
+	private ApplicationContext ctx1;
+	
+	@Autowired
+	private BeanFactory factory2;
+	
+	@Autowired
+	private ApplicationContext ctx2;
+	
+	static{
+		System.out.println("Load Hello Bean");
+	}
+	
+	public  Hello(){
+		System.out.println("Class Hello Default Constructor");
+	}
+	
+	
+	
+	public Hello(int x) {
+		System.out.println("Class Hello int-arg Constructor");
+		this.x = x;
+	}
+
+
+
+	public void setStr(String str) {
+		System.out.println("Class Hello-setStr()");
+		this.str = str;
+	}
+
+
+	public void setBobj(B bobj) {
+		System.out.println("Class Hello-setBaobj()");
+		this.bobj = bobj;
+	}
+
+	@PostConstruct
+	public void init1(){
+		System.out.println("Class Hello-init1()");
+		if (msg==null) {
+			msg="Hello guys";
+		}
+	}
+
+	
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("Class Hello-afterPropertiesSet()");
+		if (msg==null) {
+			msg="Hello guys";
+		}
+	}
+	
+	public void myInit(){
+		System.out.println("Class Hello-myInit()");
+		if (msg==null) {
+			msg="Hello guys";
+		}
+	}
+	
+	public void setBeanName(String bean_name) {
+		System.out.println("Class Hello-setBeanName()");
+		this.bean_name = bean_name;
+	}
+	
+
+	public void setBeanFactory(BeanFactory factory1) throws BeansException {
+		System.out.println("Class Hello-setBeanFactory()");
+		this.factory1 = factory1;
+		
+	}
+	
+	public void setApplicationContext(ApplicationContext ctx1) throws BeansException {
+		System.out.println("Class Hello-setApplicationContext()");
+		this.ctx1 = ctx1;
+		
+	}
+	
+	@PreDestroy
+	public void cleanUp(){
+		System.out.println("Class Hello-cleanUp()");
+	}
+	
+
+	public void destroy() throws Exception {
+		System.out.println("Class Hello-destroy()");
+		
+	}
+	
+	public void myCleanup(){
+		System.out.println("Class Hello-myCleanup()");
+		
+	}
+	
+
+	public void setXYZ() {
+		System.out.println("Class Hello-setXYZ()");
+		
+	}
+	
+	@MyXYZ1
+	public void myXYZ(){
+		System.out.println("Class Hello-myXYZ()");
+	}
+	
+	public void show()
+	{
+		System.out.println(x);
+		System.out.println(str);
+		System.out.println(msg);
+		System.out.println(aobj);
+		System.out.println(bobj);
+		System.out.println("Hello Bean Name-:"+bean_name);
+		System.out.println("Hello Bean Running In BeanFactory:-"+factory1.getClass().getSimpleName());
+		System.out.println("Hello Bean Running In ApplicationFactory:-"+ctx1.getClass().getSimpleName());
+		
+		System.out.println("Hello Bean Running In BeanFactory:-"+factory2.getClass().getSimpleName());
+		System.out.println("Hello Bean Running In ApplicationFactory:-"+ctx2.getClass().getSimpleName());
+	}
+
+
+
+
+
+
+	
+
+
+
+	
+	
+
+
+	
+
+
+
+	
+	
+
+
+
+	
+}

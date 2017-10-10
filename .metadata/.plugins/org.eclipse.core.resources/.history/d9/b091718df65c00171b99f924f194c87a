@@ -1,0 +1,21 @@
+package com.avishek.spring;
+
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.ApplicationListener;
+
+public class MyListener1 implements ApplicationListener{
+
+	
+	public void onApplicationEvent(ApplicationEvent event) {
+		System.out.println("ML1-->");
+		
+		if (event instanceof BatchEvent ) {
+			BatchEvent be = (BatchEvent) event;
+			BatchTO bto = be.getBto();
+			System.out.println(bto);
+		} else {
+
+		}
+	}
+
+}

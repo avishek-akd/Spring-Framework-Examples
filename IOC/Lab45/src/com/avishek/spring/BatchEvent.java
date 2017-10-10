@@ -1,0 +1,20 @@
+package com.avishek.spring;
+
+import org.springframework.context.ApplicationEvent;
+
+public class BatchEvent extends ApplicationEvent{
+
+	BatchTO bto;
+	
+	public BatchEvent(Object source , BatchTO bto) {
+		super(source);
+		this.bto = bto;
+	}
+
+	public BatchTO getBto() {
+		return bto;
+	}
+	
+	
+
+}

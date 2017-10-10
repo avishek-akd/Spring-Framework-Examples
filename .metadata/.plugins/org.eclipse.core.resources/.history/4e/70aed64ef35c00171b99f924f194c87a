@@ -1,0 +1,5 @@
+package com.avishek.spring;
+
+public class BatchTO {
+
+}

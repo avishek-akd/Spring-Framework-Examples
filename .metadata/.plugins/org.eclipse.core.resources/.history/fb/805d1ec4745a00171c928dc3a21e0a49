@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">  
+    
+    
+    
+   
+	<bean id="acc" class="com.avishek.spring.Account">
+		<property name="accno" value="102"/>
+		<property name="atype" value="SA"/>
+		<property name="bal" value="1000.0"/>
+
+	</bean>
+    
+    
+	<bean id="add" class="com.avishek.spring.Address">
+		<constructor-arg value="BBSR"/>
+		<constructor-arg value="UNIT-8"/>
+		<constructor-arg value="ODISHA"/>
+	</bean>
+
+
+	<bean id="cust" class="com.avishek.spring.Customer">
+		<constructor-arg value="1"/>
+		<constructor-arg value="Avishek"/>
+		<constructor-arg value="a@gmail.com"/>
+		<constructor-arg value="8908904383"/>
+		
+		<!-- <constructor-arg>
+			<list>
+				<value>b@gmail.com</value>
+				<value>c@gmail.com</value>
+				<value>d@gmail.com</value>
+			</list>
+		</constructor-arg> -->
+		
+		<property name="emails">
+			<list>
+				<value>b@gmail.com</value>
+				<value>c@gmail.com</value>
+				<value>d@gmail.com</value>
+			</list>
+		</property>
+		
+		<property name="phones">
+			<set>
+				<value>9777301031</value>
+				<value>9777911302</value>
+				<value>8908833124</value>
+			</set>
+		</property>
+		
+		<property name="refs">
+			<map>
+				<entry key="AA" value="11111"/>
+				<entry key="BB" value="22222"/>
+				<entry key="CC" value="33333"/>
+			</map>
+		</property>
+		
+		<property name="myprops">
+			<props>
+				<prop key="DD">77</prop>
+				<prop key="EE">88</prop>
+				<prop key="FF">99</prop>
+			</props>
+		</property>
+		
+		<property name="add" ref="add"/>
+		
+	</bean> 
+      
+</beans>

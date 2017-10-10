@@ -1,0 +1,17 @@
+
+
+create database SpringTransaction;
+
+use SpringTransaction;
+
+
+
+create table Account(
+	accno int PRIMARY KEY,
+	atype char(20),
+	bal double
+	);
+	
+insert into Account values(101,"SA",20000);
+insert into Account values(102,"SA",30000);
+insert into Account values(103,"CA",40000);

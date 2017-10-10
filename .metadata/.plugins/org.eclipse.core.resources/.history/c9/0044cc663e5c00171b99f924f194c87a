@@ -1,0 +1,6 @@
+package com.avishek.spring;
+
+public interface XYZ {
+
+	static void setXYZ(){};
+}

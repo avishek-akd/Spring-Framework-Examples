@@ -1,0 +1,109 @@
+package com.avishek.spring;
+
+
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.HibernateTemplate;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
+
+
+public class HibernateCustomerDAO implements CustomerDAO {
+
+	@Autowired
+	HibernateTemplate hTemp;
+	
+	
+
+
+	public CustomerTO getCustomerByEmail(String email) {
+		String hql = "from Customer cust where cust.email=:email";
+		List<Customer> custlist = (List<Customer>) hTemp.findByNamedParam(hql,"email",email);
+		Customer cust = custlist.get(0);
+		CustomerTO cto = new CustomerTO(cust.getCid(), cust.getCname(), cust.getEmail(), cust.getPhone(), cust.getCity());
+			
+		return cto;
+	}
+
+
+	public List<CustomerTO> getAllCustomers() {
+		String hql = "from Customer cust";
+		List<Customer> cust = (List<Customer>) hTemp.find(hql);
+		
+		// hTemp.loadAll(Customer.class)
+		
+		List<CustomerTO> ctoList= new 	ArrayList<CustomerTO>();	
+		for (Customer customer : cust) {
+			CustomerTO cto = new CustomerTO(customer.getCid(), customer.getCname(), customer.getEmail(), customer.getPhone(), customer.getCity());
+			ctoList.add(cto);
+		}
+		return ctoList;
+	}
+
+
+	public List<CustomerTO> getCustomersByCity(String city) {
+		String hql = "from Customer cust where cust.city=?";
+		Object []args = {city};
+		List<Customer> cust = (List<Customer>) hTemp.find(hql,args);
+		List<CustomerTO> ctoList= new 	ArrayList<CustomerTO>();	
+		for (Customer customer : cust) {
+			CustomerTO cto = new CustomerTO(customer.getCid(), customer.getCname(), customer.getEmail(), customer.getPhone(), customer.getCity());
+			ctoList.add(cto);
+		}
+		return ctoList;
+	}
+
+
+	public int getCustomersCount() {
+		List list = hTemp.findByNamedQuery("CountAll");
+		System.out.println(list.get(0).getClass().getSimpleName());
+		BigInteger bint = (BigInteger)list.get(0);
+		return bint.intValue();
+	}
+
+
+	public int getCustomersCountByCity(String city) {
+		
+		List list = hTemp.findByNamedQuery("CountByCity",city);
+		System.out.println(list.get(0).getClass().getSimpleName());
+		BigInteger bint = (BigInteger)list.get(0);
+		return bint.intValue();
+		
+	}
+
+
+	public String getCustomerCityByEmail(String email) {
+		List list = hTemp.findByNamedQuery("getCity",email);
+		System.out.println(list.get(0).getClass().getSimpleName());
+		String str = (String)list.get(0);
+		return str;
+	}
+
+
+	
+	public long getCustomerPhoneByEmail(String email) {
+		List list = hTemp.findByNamedQuery("getPhone",email);
+		System.out.println(list.get(0).getClass().getSimpleName());
+		String str = (String)list.get(0);
+		return Long.parseLong(str);
+	}
+
+
+	@Override
+	public List<CustomerTO> x() {
+		List list = hTemp.findByNamedQuery("x");
+		System.out.println(list.get(0).getClass().getSimpleName());
+		BigInteger bint = (BigInteger)list.get(0);
+		return bint.intValue();
+	}
+	
+	
+
+
+}

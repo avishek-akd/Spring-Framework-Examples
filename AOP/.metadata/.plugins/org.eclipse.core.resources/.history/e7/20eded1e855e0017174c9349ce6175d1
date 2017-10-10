@@ -1,0 +1,17 @@
+package com.avishek.spring;
+
+import org.springframework.aop.ThrowsAdvice;
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class MTAdvice implements ThrowsAdvice{
+
+	@Autowired
+	TxServices ts;
+	
+	@Autowired
+	LogService ls;
+	
+		public void afterThrowing(Exception e){
+			ts.rollback();
+		}
+}

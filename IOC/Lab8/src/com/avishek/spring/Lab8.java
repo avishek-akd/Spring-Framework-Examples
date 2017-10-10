@@ -1,0 +1,26 @@
+package com.avishek.spring;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+
+public class Lab8 {
+	public static void main(String[] args) {
+		
+	
+		ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringConfig.class);
+		
+		System.out.println("----------Spring Container Is Ready----------");
+	
+		//Account account = (Account) ctx.getBean("acc");
+		//Address address = (Address) ctx.getBean("add");
+		
+		Customer customer = (Customer) ctx.getBean("cust");
+		
+		//System.out.println(account);
+		//System.out.println(address);
+		
+		customer.show();
+		
+	}
+}

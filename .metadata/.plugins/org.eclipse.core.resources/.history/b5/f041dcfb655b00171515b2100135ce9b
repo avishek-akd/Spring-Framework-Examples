@@ -1,0 +1,29 @@
+package com.avishek.spring;
+
+import javax.annotation.Resource;
+import javax.inject.Inject;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class Hello {
+	
+		@Inject
+	private A ao;
+		@Autowired(requiredfalse)
+	private B bo;
+	
+
+	static{
+		System.out.println("Load Hello Bean");
+	}
+	
+	public  Hello(){
+		System.out.println("Class Hello Default Constructor");
+	}
+	
+	public void show()
+	{
+		ao.showA();
+		bo.showB();
+	}
+}

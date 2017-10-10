@@ -1,0 +1,92 @@
+package com.avishek.spring;
+
+import java.util.*;
+
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
+
+@Configuration
+public class SpringConfig {
+
+	@Bean
+	public List<String> emails(){
+		List<String> emails = new ArrayList<String>();
+		emails.add("b@gmail.com");
+		emails.add("c@gmail.com");
+		emails.add("d@gmail.com");
+		
+		return emails;
+	}
+	
+	@Bean
+	public Set<Long> phones(){
+		Set<Long> phones = new LinkedHashSet<Long>();
+		phones.add(new Long(890890));
+		phones.add(new Long(890891));
+		phones.add(new Long(890892));
+		return phones;
+	}
+	
+	@Bean
+	public Map<String,Long> references(){
+		Map<String,Long> refs = new LinkedHashMap<String,Long>();
+		
+		refs.put("AA", new Long(11));
+		refs.put("BB", new Long(22));
+		refs.put("CC", new Long(33));
+		return refs;
+	}
+	
+
+	@Bean
+	public Properties myprops(){
+		Properties prop = new Properties();
+		
+		prop.put("DD", new Long(11));
+		prop.put("EE", new Long(22));
+		prop.put("FF", new Long(33));
+		return prop;
+	}
+	
+	
+	@Bean
+	public Address createAddress(){
+		Address add = new Address("BBSR", "UNIT-8", "ODISHA");
+		return add;
+	}
+	
+	@Bean
+	public Account createAccount1(){
+		Account acc1 = new Account();
+		acc1.setAccno(101);
+		acc1.setAtype("SA");
+		acc1.setBal(10000.0);
+		return acc1;
+	}
+	
+	
+	
+	@Bean
+	public List<Account> accounts(){
+		List<Account> acc = new ArrayList<Account>();
+		
+		Account acc2 = new Account();
+		acc2.setAccno(102);
+		acc2.setAtype("SA");
+		acc2.setBal(20000.0);
+		
+		acc.add(createAccount1());
+		acc.add(acc2);
+		return acc;
+	}
+	
+	@Bean(name="cust")
+	public Customer createCustomer(){
+		Customer cust = new Customer(1, "Avishek", "a@gmail.com", new Long(8908904));
+		
+		return cust;
+	}
+}

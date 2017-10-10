@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">  
+    
+    
+    
+    
+    <!-- Create the Object of A class by no arg-constructor and
+    Store the reference in given Id = aobj and also mention 
+    setter-based spring dependency injection -->
+    
+	<bean id="aobj" class="com.avishek.spring.A">
+		<property name="a" value="102"/>
+		<property name="msg" value="Debasis"/>
+
+	</bean>
+    
+    
+    <!-- Create the Object of B class by 2 arg-constructor and
+    Store the reference in given Id = bobj also mention 
+    constructor-based spring dependency injection -->
+    
+	<bean id="bobj" class="com.avishek.spring.B">
+		<constructor-arg value="101"/>
+		<constructor-arg value="Avishek"/>
+	</bean>
+
+
+
+	<!-- Create the Object of Hello class by one arg-constructor and
+    Store the reference in given Id = hello and also mention 
+    setter-based and  constructor-based spring dependency injection -->
+
+	<bean id="hello" class="com.avishek.spring.Hello">
+		<property name="ao" ref="aobj"/>
+		<constructor-arg ref="bobj"/>
+
+	</bean> 
+	
+	<!-- <bean id="hello" class="com.avishek.spring.Hello" scope="prototype">
+		<property name="ao" ref="aobj"/>
+		<constructor-arg ref="bobj"/>
+
+	</bean>  -->
+      
+</beans>

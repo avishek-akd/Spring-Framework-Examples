@@ -1,0 +1,98 @@
+package com.avishek.spring;
+
+
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+public class JdbcAccountDAO implements AccountDAO {
+
+	@Autowired
+	JdbcTemplate jdbcTemp;
+	
+	@Autowired
+	PlatformTransactionManager txManager;
+	
+
+	public double getBal(int accno) {
+		String sql = "select bal from Account where accno=?";
+		double bal = jdbcTemp.queryForObject(sql, Double.class,accno);
+	
+		return bal;
+	}
+
+	public void deposit(int accno, double amt) {
+		
+		TransactionStatus ts= null;
+		try {
+			TransactionDefinition txDef = new DefaultTransactionDefinition(TransactionDefinition.PROPAGATION_REQUIRED);
+			ts = txManager.getTransaction(txDef);
+			
+			
+			double bal = getBal(accno);
+			bal = bal+amt;
+			String sql = "update account set bal=? where accno=?";
+			jdbcTemp.update(sql,bal,accno);
+			
+			txManager.commit(ts);
+		} catch (Exception e) {
+				e.printStackTrace();	
+				txManager.rollback(ts);
+			}
+		
+		
+		
+	}
+
+	public void withdraw(int accno, double amt) throws InsufficientFundException {
+		
+		TransactionStatus ts= null;
+		try {
+			TransactionDefinition txDef = new DefaultTransactionDefinition(TransactionDefinition.PROPAGATION_REQUIRED);
+			ts = txManager.getTransaction(txDef);
+		
+		
+		double bal = getBal(accno);
+		if (bal>=amt+2000) {
+			bal = bal-amt;
+			String sql = "update account set bal=? where accno=?";
+			jdbcTemp.update(sql,bal,accno);
+		} else {
+			
+		}
+		
+		
+		txManager.commit(ts);
+		} catch (Exception e) {
+				e.printStackTrace();	
+				txManager.rollback(ts);
+			}
+		
+	}
+
+	public void fundTransfer(int saccno, int daccno, double amt) throws InsufficientFundException {
+		
+		TransactionStatus ts= null;
+		try {
+			TransactionDefinition txDef = new DefaultTransactionDefinition(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+			ts = txManager.getTransaction(txDef);
+		
+		
+		
+		deposit(daccno, amt);
+		withdraw(saccno, amt);
+		
+		txManager.commit(ts);
+		} catch (Exception e) {
+				e.printStackTrace();	
+				txManager.rollback(ts);
+			}
+	}
+	
+
+
+
+}

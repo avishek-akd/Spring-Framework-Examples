@@ -1,0 +1,23 @@
+package com.avishek.spring;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class Lab48 {
+	
+	public static void main(String[] args) {
+		
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+		
+		AccountService as = (AccountService) ctx.getBean("as");
+		as.getBal();
+		as.myDeposit();
+		as.myWithdraw();
+		
+		CustomerService cs = (CustomerService) ctx.getBean("cs");
+		
+		cs.addCustomer();
+		cs.updateCustomer();
+		
+	}
+}

@@ -1,0 +1,46 @@
+package com.avishek.spring;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
+
+public class Hello {
+	
+	private A ao;
+	private B bo;
+	
+
+	static{
+		System.out.println("Load Hello Bean");
+	}
+	
+	public  Hello(){
+		System.out.println("Class Hello Default Constructor");
+	}
+	
+	
+	
+	@Required
+	public void setAo(A ao) {
+		System.out.println("Class Hello-setAo(A ao) ");
+		this.ao = ao;
+	}
+
+
+
+	@Required
+	public void setBo(B bo) {
+		System.out.println("Class Hello-setBo(B bo) ");
+		this.bo = bo;
+	}
+
+
+
+
+	public void show()
+	{
+		System.out.println(ao);
+		System.out.println(bo);
+		ao.showA();
+		bo.showB();
+	}
+}

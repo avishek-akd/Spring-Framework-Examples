@@ -1,0 +1,63 @@
+package com.avishek.spring;
+
+
+
+import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+
+public class Lab64 {
+	
+	public static void main(String[] args) {
+
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+		
+		System.out.println("----------Spring Container Is Ready----------\n");
+		
+		CustomerDAO cdao = (CustomerDAO) ctx.getBean("cdao");
+		
+		// GetAllCustomers
+		List<CustomerTO> ctolist = cdao.getAllCustomers();
+		for (CustomerTO customerTO : ctolist) {
+			System.out.println(customerTO);
+		}
+		
+		// GetCustomerByEmail
+		CustomerTO cto = cdao.getCustomerByEmail("b@cc");
+		System.out.println(cto);
+		
+		
+		// GetCustomersByCity
+		ctolist = cdao.getCustomersByCity("Bbsr");
+		for (CustomerTO customerTO : ctolist) {
+			System.out.println(customerTO);
+		}
+		
+		// GetCustomersCount
+		int x = cdao.getCustomersCount();
+		System.out.println(x);
+		
+		// GetCustomersCountByCity
+		x = cdao.getCustomersCountByCity("BBSR");
+		System.out.println(x);
+		
+		// GetCustomerCityByEmail
+		String str = cdao.getCustomerCityByEmail("b@cc");
+		System.out.println(str);
+		
+		// GetCustomerPhoneByEmail
+		Long p = cdao.getCustomerPhoneByEmail("b@cc");
+		System.out.println(p);
+		
+		
+		List<CustomerTO> ctolist1 = cdao.x();
+		for (CustomerTO customerTO : ctolist1) {
+			System.out.println(customerTO);
+		}
+		
+	}
+}
+
+

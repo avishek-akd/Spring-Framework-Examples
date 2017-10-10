@@ -1,0 +1,12 @@
+package com.avishek.spring;
+
+import java.util.List;
+
+public class Student {
+	
+	private String sname;
+	private long phone;
+	private List<String> emails;
+	private List<Long> phones;
+ 	
+}

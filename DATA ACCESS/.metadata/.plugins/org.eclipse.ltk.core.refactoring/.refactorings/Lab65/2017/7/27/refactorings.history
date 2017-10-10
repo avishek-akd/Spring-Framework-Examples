@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.avishek.spring.Lab64&apos; to &apos;Lab65&apos;&#x0A;- Original project: &apos;Lab65&apos;&#x0A;- Original element: &apos;com.avishek.spring.Lab64&apos;&#x0A;- Renamed element: &apos;com.avishek.spring.Lab65&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Lab64&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.avishek.spring{Lab64.java[Lab64" matchStrategy="1" name="Lab65" qualified="false" references="true" similarDeclarations="false" stamp="1499253610051" textual="false" version="1.0"/>
+</session>

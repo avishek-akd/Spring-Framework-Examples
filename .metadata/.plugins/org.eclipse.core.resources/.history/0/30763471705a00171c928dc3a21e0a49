@@ -1,0 +1,59 @@
+package com.avishek.spring;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+public class Customer {
+	private int cid;
+	private String cname;
+	private String email;
+	private Long phone;
+	
+	private List<String> emails;
+	
+	private Set<Long> phones;
+	
+	private Map<String, Long> refs;
+	
+	
+	public Customer(int cid, String cname, String email, Long phone) {
+		this.cid = cid;
+		this.cname = cname;
+		this.email = email;
+		this.phone = phone;
+	}
+	
+	
+
+	public void setEmails(List<String> emails) {
+		this.emails = emails;
+	}
+
+
+
+	public void setPhones(Set<Long> phones) {
+		this.phones = phones;
+	}
+
+
+
+	public void setRefs(Map<String, Long> refs) {
+		this.refs = refs;
+	}
+
+
+
+	public void show(){
+		System.out.println(cid + "\t" + cname + "\t" + email+ "\t" +phone);
+		
+		System.out.println(emails);
+		System.out.println(emails.getClass().getName());
+		
+		System.out.println(phones);
+		System.out.println(phones.getClass().getName());
+		
+		System.out.println(refs);
+		System.out.println(refs.getClass().getName());
+	}
+}

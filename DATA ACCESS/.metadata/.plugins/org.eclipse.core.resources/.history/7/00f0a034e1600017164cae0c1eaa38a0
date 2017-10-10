@@ -1,0 +1,33 @@
+package com.avishek.spring;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+
+public class Lab58 {
+	
+	public static void main(String[] args) throws InsufficientFundException {
+
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+		
+		System.out.println("----------Spring Container Is Ready----------\n");
+		
+		
+		AccountDAO adao = (AccountDAO) ctx.getBean("adao");
+		
+		double bal = adao.getBal(101);
+		System.out.println(bal);
+		
+		adao.deposit(101, 10000);
+		double bal = adao.getBal(101);
+		System.out.println(bal);
+		
+		adao.withdraw(101,5000);
+		double bal = adao.getBal(101);
+		System.out.println(bal);
+		
+		
+	}	
+}
+
+

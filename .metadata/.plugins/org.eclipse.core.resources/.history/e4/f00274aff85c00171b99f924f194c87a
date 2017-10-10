@@ -1,0 +1,30 @@
+package com.avishek.spring;
+
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.ApplicationListener;
+
+public class MyListener2 implements ApplicationListener <BatchEvent>{
+
+	
+	//Listen Only BatchEvent 
+	
+	
+	
+	public void onApplicationEvent(BatchEvent be) {
+		System.out.println("ML2-->BatchEvent");
+		
+		if (event instanceof BatchEvent ) {
+			BatchEvent be = (BatchEvent) event;
+			BatchTO bto = be.getBto();
+			System.out.println(bto);
+		} else if (event instanceof WorkshopEvent ) {
+			WorkshopEvent we = (WorkshopEvent) event;
+			WorkshopTO wto = we.getWto();
+			System.out.println(wto);
+		} else {
+			System.out.println("Some Other Event");
+		}
+		
+	}
+
+}

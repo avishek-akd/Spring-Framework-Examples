@@ -1,0 +1,12 @@
+package com.avishek.spring;
+
+public class Hai {
+	
+	static{
+		System.out.println("Load A Bean");
+	}
+	
+	public  Hai(){
+		System.out.println("Class A Default Constructor");
+	}
+}

@@ -1,0 +1,24 @@
+package com.avishek.spring;
+
+public class Account {
+	
+	private int accno;
+	private String atype;
+	private double bal;
+	
+	public Account(){}
+
+	public Account(int accno, String atype, double bal) {
+		this.accno = accno;
+		this.atype = atype;
+		this.bal = bal;
+	}
+	
+	public Account( String atype, double bal) {
+		this.atype = atype;
+		this.bal = bal;
+	}
+	
+	
+	
+}

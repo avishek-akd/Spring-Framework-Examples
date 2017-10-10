@@ -1,0 +1,23 @@
+package com.avishek.spring;
+
+public class A {
+	private int a;
+	private String msg;
+	
+	
+	static{
+		System.out.println("Load A Bean");
+	}
+	
+	public  A(){
+		System.out.println("Class A Default Constructor");
+	}
+	
+	
+	
+	public void showA()
+	{
+		System.out.println(a);
+		System.out.println(msg);
+	}
+}

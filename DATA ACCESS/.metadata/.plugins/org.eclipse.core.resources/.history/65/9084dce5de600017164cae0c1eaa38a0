@@ -1,0 +1,78 @@
+package com.avishek.spring;
+
+import java.util.List;
+
+
+import  org.springframework.jdbc.core.RowMapper;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+public class JdbcAccountDAO implements AccountDAO {
+
+	@Autowired
+	JdbcTemplate jdbcTemp;
+	
+
+
+	public AccountTO getCustomerByCid(int cid) {
+		String sql = "select * from customer where cid=?";
+		//Object [] args = {cid};
+		RowMapper rm = new CustomerRowMapper();
+		AccountTO cto = (AccountTO )jdbcTemp.queryForObject(sql,rm,cid);
+		
+		return cto;
+	}
+
+	public AccountTO getCustomerByEmail(String email) {
+		String sql = "select * from customer where email=?";
+		Object [] args = {email};
+		AccountTO cto = (AccountTO )jdbcTemp.queryForObject(sql,args,new CustomerRowMapper());
+		
+		return cto;
+	}
+
+	public List<AccountTO> getAllCustomers() {
+		String sql = "select * from Customer";
+		RowMapper rm = new CustomerRowMapper();
+		List<AccountTO> list = jdbcTemp.query(sql,rm);
+		
+		return list;
+	}
+
+	public List<AccountTO> getCustomersByCity(String city) {
+		String sql = "select * from Customer where city=?";
+		Object [] args = {city};
+		RowMapper rm = new CustomerRowMapper();
+		List<AccountTO> list = jdbcTemp.query(sql,args,rm);
+		
+		return list;
+	}
+
+	
+	public int getCustomersCount() {
+		String sql = "select count(*) from Customer";
+		int count = jdbcTemp.queryForObject(sql, Integer.class);
+		
+		return count;
+	}
+
+	public String getCustomerCityByEmail(String email) {
+		String sql = "select city from Customer where email=?";
+		String city = jdbcTemp.queryForObject(sql, String.class,email);
+		
+		return city;
+		
+	}
+
+	public long getCustomerPhoneByEmail(String email) {
+		
+		String sql = "select phone from Customer where email=?";
+		long phone = jdbcTemp.queryForObject(sql, Long.class,email);
+		
+		return phone;
+		
+	}
+
+}

@@ -1,0 +1,66 @@
+package com.avishek.spring;
+
+import java.util.*;
+
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
+
+@Configuration
+public class SpringConfig {
+
+/*	@Bean(name="ao")
+	public A createA(){
+		A aobj = new A();
+		aobj.setA(101);
+		aobj.setMsg("Debasis");
+		
+		return aobj;
+	}
+	
+	@Bean(name="bo")
+	public B createB(){
+		B bobj = new B(111, "Avishek");
+		
+		return bobj;
+	}*/
+
+	@Bean
+	public List<String> emails(){
+		List<String> emails = new ArrayList<String>();
+		emails.add("b@gmail.com");
+		emails.add("c@gmail.com");
+		emails.add("d@gmail.com");
+		
+		return emails;
+	}
+	
+	@Bean
+	public Set<Long> phones(){
+		Set<Long> phones = new LinkedHashSet<Long>();
+		phones.add(new Long(890890));
+		phones.add(new Long(890891));
+		phones.add(new Long(890892));
+		return phones;
+	}
+	
+	@Bean
+	public Map<String,Long> references(){
+		Map<String,Long> refs = new LinkedHashMap<String,Long>();
+		
+		refs.put("AA", new Long(11));
+		refs.put("BB", new Long(22));
+		refs.put("CC", new Long(33));
+		return refs;
+	}
+	
+	
+	@Bean(name="cust")
+	public Customer createCustomer(){
+		Customer cust = new Customer(1, "Avishek", "a@gmail.com", new Long(8908904));
+		
+		return cust;
+	}
+}

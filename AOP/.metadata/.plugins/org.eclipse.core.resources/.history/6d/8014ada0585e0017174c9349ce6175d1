@@ -1,0 +1,10 @@
+package com.avishek.spring;
+
+import org.springframework.aop.ThrowsAdvice;
+
+public class MTAdvice implements ThrowsAdvice{
+
+		public void afterThrowing(Exception e){
+			
+		}
+}

@@ -1,0 +1,71 @@
+package com.avishek.spring;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.HibernateTemplate;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
+
+
+public class HibernateAccountDAO implements AccountDAO {
+
+	@Autowired
+	HibernateTemplate hTemp;
+	
+	
+	@Autowired
+	HibernateTransactionManager txManager;
+	
+	
+	public void addCustomer(CustomerTO cto) {
+		Account cust = new Account(cto.getCname(),cto.getEmail(),cto.getPhone(),cto.getCity());
+		
+		TransactionDefinition txDef = new DefaultTransactionDefinition();
+		TransactionStatus ts = txManager.getTransaction(txDef);
+		hTemp.save(cust);
+		txManager.commit(ts);
+		
+	}
+
+	@Transactional
+	public void updateCustomer(CustomerTO cto) {
+		Account cust = new Account(cto.getCid(),cto.getCname(),cto.getEmail(),cto.getPhone(),cto.getCity());
+		
+		TransactionDefinition txDef = new DefaultTransactionDefinition();
+		TransactionStatus ts = txManager.getTransaction(txDef);
+		hTemp.update(cust);
+		txManager.commit(ts);
+
+	}
+	
+
+	public void deleteCustomer(int cid) {
+		
+		TransactionDefinition txDef = new DefaultTransactionDefinition();
+		TransactionStatus ts = txManager.getTransaction(txDef);
+		Account cust = (Account) hTemp.load(Account.class, 102);
+		hTemp.delete(cust);
+		txManager.commit(ts);
+		
+	}
+
+	public CustomerTO getCustomerByCid(int cid) {
+		Account cust = (Account) hTemp.load(Account.class, 101);
+		CustomerTO cto = new CustomerTO(cust.getCid(), cust.getCname(), cust.getEmail(), cust.getPhone(), cust.getCity());
+		return cto;
+	}
+
+
+	
+
+
+
+	
+	
+	
+
+
+}

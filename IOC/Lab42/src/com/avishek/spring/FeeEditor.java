@@ -1,0 +1,20 @@
+package com.avishek.spring;
+
+import java.beans.PropertyEditorSupport;
+import java.util.Arrays;
+import java.util.List;
+
+public class FeeEditor extends PropertyEditorSupport {
+	
+	public void setAsText(String txt){
+		System.out.println("Container Use The FeeEditor For com.avishek.spring.Fee Type Field");
+		
+		String str[] = txt.split(",");
+		double totalfee = Double.parseDouble(str[0]);
+		double feepaid = Double.parseDouble(str[1]);
+		double feebal = Double.parseDouble(str[2]);
+		Fee fee = new Fee(totalfee, feepaid, feebal);
+		
+		setValue(fee);
+	}
+}

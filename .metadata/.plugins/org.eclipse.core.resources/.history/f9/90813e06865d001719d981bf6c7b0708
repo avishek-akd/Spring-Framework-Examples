@@ -1,0 +1,18 @@
+package com.avishek.spring;
+
+public class Fee {
+	
+	private double totalfee;
+	private double feepaid;	
+	private double feebal;
+	
+	
+	public Fee(double totalfee, double feepaid, double feebal) {
+		this.totalfee = totalfee;
+		this.feepaid = feepaid;
+		this.feebal = feebal;
+	}
+	
+	
+	
+}

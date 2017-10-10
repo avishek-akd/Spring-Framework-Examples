@@ -1,0 +1,18 @@
+package com.avishek.spring;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+
+@Configuration
+@PropertySource(value={"common.properties","oracle.properties","mySql.properties"})
+public class SpringConfig {
+
+	
+	@Bean
+	public DataSource mySqlDataSource(){
+		DataSource ds = new DataSource();
+		ds.setDriverClass();
+		return ds;
+	}
+}

@@ -1,0 +1,89 @@
+package com.avishek.spring;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.HibernateTemplate;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
+
+
+public class HibernateCustomerDAO implements CustomerDAO {
+
+	@Autowired
+	HibernateTemplate hTemp;
+	
+	
+
+
+	public CustomerTO getCustomerByEmail(String email) {
+		String hql = "from Customer cust where cust.email=?";
+		Customer cust = (Customer) hTemp.find(hql,email);	
+		CustomerTO cto = new CustomerTO(cust.getCid(), cust.getCname(), cust.getEmail(), cust.getPhone(), cust.getCity());
+			
+		return cto;
+	}
+
+
+	@Override
+	public List<CustomerTO> getAllCustomers() {
+		String hql = "from Customer cust";
+		List<Customer> cust = (List<Customer>) hTemp.find(hql);
+		List<CustomerTO> ctoList= new 	ArrayList<CustomerTO>();	
+		for (Customer customer : cust) {
+			CustomerTO cto = new CustomerTO(customer.getCid(), customer.getCname(), customer.getEmail(), customer.getPhone(), customer.getCity());
+			ctoList.add(cto);
+		}
+		return ctoList;
+	}
+
+
+	@Override
+	public List<CustomerTO> getCustomersByCity(String city) {
+		String hql = "from Customer cust where cust.city=?";
+		List<Customer> cust = (List<Customer>) hTemp.find(hql,city);
+		List<CustomerTO> ctoList= new 	ArrayList<CustomerTO>();	
+		for (Customer customer : cust) {
+			CustomerTO cto = new CustomerTO(customer.getCid(), customer.getCname(), customer.getEmail(), customer.getPhone(), customer.getCity());
+			ctoList.add(cto);
+		}
+		return ctoList;
+	}
+
+
+	@Override
+	public int getCustomersCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public int getCustomersCountByCity() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public String getCustomerCityByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public long getCustomerPhoneByEmail(String email) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
+
+
+}

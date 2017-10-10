@@ -1,0 +1,26 @@
+package com.avishek.spring;
+
+public class Hai {
+	private Hello hello;
+	
+	
+	static{
+		System.out.println("Load Hai Bean");
+	}
+	
+	
+	
+	
+	
+	public Hai(Hello hello) {
+		System.out.println("Hai-1 arg");
+		this.hello = hello;
+	}
+
+
+
+	public void show()
+	{
+		System.out.println(hello);
+	}
+}

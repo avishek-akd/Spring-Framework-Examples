@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+    http://www.springframework.org/schema/context  
+    http://www.springframework.org/schema/context/spring-context-4.2.xsd">  
+    
+    <context:annotation-config/>
+    
+    <bean name="asTarget" class="com.avishek.spring.AccountService"/>
+	<bean name="csTarget" class="com.avishek.spring.CustomerServiceImpl"/>
+	
+	<bean name="ss" class="com.avishek.spring.SecurityService"/>
+	<bean name="ts" class="com.avishek.spring.TxServices"/>
+
+	 
+	    
+	<bean name="mba" class="com.avishek.spring.MBAdvice"/>
+	<bean name="mra" class="com.avishek.spring.MRAdvice"/>
+	<bean name="mta" class="com.avishek.spring.MTAdvice"/>
+	    
+	<bean name="asProxy" class="org.springframework.aop.framework.ProxyFactoryBean">	<!-- Telling the container that , ProxyFactoryBean create a proxy class -->
+  		<property name="targetClass" value="com.avishek.spring.AccountService"/>        <!-- Proxy Class is the subclass of AccountService class  -->
+  		<property name="target" ref="asTarget"/>										<!-- Target Object is requir to class the Business Operation -->
+  		<property name="interceptorNames">												
+  			<list>
+  				<value>mba</value>   
+  				<value>mra</value> 
+  				<value>mta</value>      <!-- ProxyFactoryBean 1st check, is there any object of a class which implement MethodBeforeAdvice
+  											 if found then call the before() of that class -->
+  			</list>
+  		</property>
+	</bean>
+	
+	<bean name="csProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+  		<property name="proxyInterfaces" value="com.avishek.spring.CustomerService"/>        
+  		<property name="target" ref="csTarget"/>									
+  		<property name="interceptorNames">												
+  			<list>
+  				<value>mba</value>   
+  				<value>mra</value> 
+  				<value>mta</value> 					
+  			</list>
+  		</property>
+	</bean>
+		
+      
+</beans>

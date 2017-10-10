@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+    http://www.springframework.org/schema/context  
+    http://www.springframework.org/schema/context/spring-context-4.2.xsd">  
+    
+    <context:annotation-config/>
+    
+    <bean name="baseDS" class="com.avishek.spring.DataSource" abstract="true">
+    	<property name="password" value="system"/>
+		<property name="min" value="4"/>
+		<property name="max" value="99"/>
+		<property name="timeout" value="1"/>
+    </bean>
+    
+	<bean name="oracleDS" parent="baseDS">
+		<property name="driverClass" value="oracle.jdbc.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+		<property name="username" value="system"/>
+	</bean>
+	
+	<bean name="mySqlDS" parent="baseDS">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/X"/>
+		<property name="username" value="root"/>
+	</bean>
+	
+	<bean name="test" class="com.avishek.spring.Test"></bean>
+	
+</beans>

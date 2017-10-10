@@ -1,0 +1,88 @@
+package com.avishek.spring;
+
+import java.util.Locale;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+
+
+
+public class TestBean {
+
+	
+	@Autowired
+	ApplicationContext ctx;
+	public void showEnglish(){
+		
+		
+		System.out.println("---------------IN ENGLISH---------------\n");
+		
+		String m1 = ctx.getMessage("wiki",null,"Not Found showEnglish()->m1",null);
+		System.out.println(m1);	
+		String m2 = ctx.getMessage("error.required",new Object[]{"Password"},"Not Found showEnglish()->m2",null);
+		System.out.println(m2);	
+		String m3 = ctx.getMessage("error.required",new Object[]{"Username"},"Not Found showEnglish()->m3",null);
+		System.out.println(m3);	
+		String m4 = ctx.getMessage("error.min",new Object[]{"Password","5"},"Not Found showEnglish()->m4",null);
+		System.out.println(m4);
+		String m5 = ctx.getMessage("error.min",new Object[]{"Username","5"},"Not Found showEnglish()->m5",null);
+		System.out.println(m5);
+		String m6 = ctx.getMessage("error.max",new Object[]{"Password","10"},"Not Found showEnglish()->m6",null);
+		System.out.println(m6);
+		String m7 = ctx.getMessage("error.max",new Object[]{"Username","10"},"Not Found showEnglish()->m7",null);
+		System.out.println(m7);
+		String m8 = ctx.getMessage("error.range",new Object[]{"Password","3","10"},"Not Found showEnglish()->m8",null);
+		System.out.println(m8);
+		String m9 = ctx.getMessage("error.range",new Object[]{"Username","3","10"},"Not Found showEnglish()->m9",null);
+		System.out.println(m9);
+	}
+	
+	public void showHindi(){
+		
+		Locale l1 = new Locale("hi");
+		
+		String m1 = ctx.getMessage("wiki",null,"Not Found showHindi()->m1",new Locale("hi"));
+		System.out.println(m1);	
+		String m2 = ctx.getMessage("error.required",new Object[]{"Password"},"Not Found showEnglish()->m2",l1);
+		System.out.println(m2);	
+		String m3 = ctx.getMessage("error.required",new Object[]{"Username"},"Not Found showEnglish()->m3",l1);
+		System.out.println(m3);	
+		String m4 = ctx.getMessage("error.min",new Object[]{"Password","5"},"Not Found showEnglish()->m4",l1);
+		System.out.println(m4);
+		String m5 = ctx.getMessage("error.min",new Object[]{"Username","5"},"Not Found showEnglish()->m5",l1);
+		System.out.println(m5);
+		String m6 = ctx.getMessage("error.max",new Object[]{"Password","10"},"Not Found showEnglish()->m6",l1);
+		System.out.println(m6);
+		String m7 = ctx.getMessage("error.max",new Object[]{"Username","10"},"Not Found showEnglish()->m7",l1);
+		System.out.println(m7);
+		String m8 = ctx.getMessage("error.range",new Object[]{"Password","3","10"},"Not Found showEnglish()->m8",l1);
+		System.out.println(m8);
+		String m9 = ctx.getMessage("error.range",new Object[]{"Username","3","10"},"Not Found showEnglish()->m9",l1);
+		System.out.println(m9);
+		
+	}
+
+	public void showOdia() {
+		
+		Locale l2 = new Locale("or");
+		
+		String m1 = ctx.getMessage("wiki",null,"Not Found showOdia()->m1",new Locale("or"));
+		System.out.println(m1);	
+		String m2 = ctx.getMessage("error.required",new Object[]{"Password"},"Not Found showEnglish()->m2",l2);
+		System.out.println(m2);	
+		String m3 = ctx.getMessage("error.required",new Object[]{"Username"},"Not Found showEnglish()->m3",l2);
+		System.out.println(m3);	
+		String m4 = ctx.getMessage("error.min",new Object[]{"Password","5"},"Not Found showEnglish()->m4",l2);
+		System.out.println(m4);
+		String m5 = ctx.getMessage("error.min",new Object[]{"Username","5"},"Not Found showEnglish()->m5",l2);
+		System.out.println(m5);
+		String m6 = ctx.getMessage("error.max",new Object[]{"Password","10"},"Not Found showEnglish()->m6",l2);
+		System.out.println(m6);
+		String m7 = ctx.getMessage("error.max",new Object[]{"Username","10"},"Not Found showEnglish()->m7",l2);
+		System.out.println(m7);
+		String m8 = ctx.getMessage("error.range",new Object[]{"Password","3","10"},"Not Found showEnglish()->m8",l2);
+		System.out.println(m8);
+		String m9 = ctx.getMessage("error.range",new Object[]{"Username","3","10"},"Not Found showEnglish()->m9",l2);
+		System.out.println(m9);
+		
+	}
+}

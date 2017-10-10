@@ -1,0 +1,32 @@
+package com.avishek.spring;
+
+import java.util.List;
+
+
+import  org.springframework.jdbc.core.RowMapper;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+public class JdbcAccountDAO implements AccountDAO {
+
+	@Autowired
+	JdbcTemplate jdbcTemp;
+
+	public void getBal(int accno) {
+		
+	}
+
+	public void deposit(int accno, double amt) {
+		
+	}
+
+	public void withdraw(int accno, double amt) {
+		
+	}
+	
+
+
+
+}

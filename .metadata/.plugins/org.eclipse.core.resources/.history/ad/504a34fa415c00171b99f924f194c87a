@@ -1,0 +1,53 @@
+package com.avishek.spring;
+
+import java.lang.reflect.Method;
+
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanPostProcessor;
+
+public class MyBeanPostProcessor implements BeanPostProcessor {
+
+	
+	
+	@Override
+	public Object postProcessBeforeInitialization(Object obj, String bname) throws BeansException {
+		System.out.println("postProcessBeforeInitialization:-"+bname);
+		
+		Class cls =  obj.getClass();
+		Class inter[] = cls.getInterfaces();
+		for (Class class1 : inter) {
+			String iname = class1.getSimpleName();
+			if (iname.equals("XYZ")){
+				System.out.println("Yes\t"+cls.getSimpleName()+"\timplement XYZ interface");
+				//Check Reflection API to invoke a method Dynamicly
+				Class cls1 = XYZ.class;
+				Method method[] = cls1.getMethods();
+				for (Method method2 : method) {
+					System.out.println(method2.getName());
+					method2.invoke(obj, method);
+					
+					
+				}
+			}
+			
+			
+		}
+		
+		
+		return obj;
+	}
+	
+	
+	
+	@Override
+	public Object postProcessAfterInitialization(Object obj, String bname) throws BeansException {
+		System.out.println("postProcessAfterInitialization:-"+bname);
+		
+		
+		
+		return obj;
+	}
+
+	
+
+}

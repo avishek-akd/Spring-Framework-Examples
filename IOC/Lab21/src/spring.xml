@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">  
+   
+
+   
+	<bean id="aobj1" class="com.avishek.spring.A">
+		<property name="a" value="102"/>
+		<property name="msg" value="Debasis"/>
+
+	</bean>
+	
+	<bean id="ao" class="com.avishek.spring.A">
+		<property name="a" value="103"/>
+		<property name="msg" value="XXXXXX"/>
+
+	</bean>
+    
+       
+	<bean id="bobj1" class="com.avishek.spring.B">
+		<constructor-arg value="101"/>
+		<constructor-arg value="Avishek"/>
+	</bean>
+	
+	<bean id="bobj2" class="com.avishek.spring.B">
+		<constructor-arg value="104"/>
+		<constructor-arg value="AAAAAA"/>
+	</bean>
+
+
+	<bean id="hello" class="com.avishek.spring.Hello" autowire="constructor"/>
+	
+	
+      
+</beans>

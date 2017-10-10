@@ -1,0 +1,26 @@
+package com.avishek.spring;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class Lab38_A {
+	public static void main(String[] args) {
+		
+		
+	
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+		
+		System.out.println("----------Spring Container Is Ready----------\n");
+	
+		
+		System.out.println("===Oracle===\n");
+		DataSource ds1 = (DataSource)ctx.getBean("oracleDS");
+		System.out.println(ds1);
+		
+		System.out.println("===Mysql===\n");
+		DataSource ds2 = (DataSource)ctx.getBean("mySqlDS");
+		System.out.println(ds2);
+		
+		
+	}
+}

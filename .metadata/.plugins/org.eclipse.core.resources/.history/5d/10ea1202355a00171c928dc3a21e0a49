@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">  
+    
+    
+    
+   
+	<bean id="acc" class="com.avishek.spring.Account">
+		<property name="accno" value="102"/>
+		<property name="atype" value="SA"/>
+		<property name="bal" value="1000.0"/>
+
+	</bean>
+    
+    
+	<bean id="add" class="com.avishek.spring.Address">
+		<constructor-arg value="BBSR"/>
+		<constructor-arg value="UNIT-8"/>
+		<constructor-arg value="ODISHA"/>
+	</bean>
+
+
+	<bean id="cust" class="com.avishek.spring.Customer">
+		<constructor-arg value="1"/>
+		<constructor-arg value="Avishek"/>
+		<constructor-arg value="a@gmail.com"/>
+		<constructor-arg value="890890"/>
+
+	</bean> 
+      
+</beans>

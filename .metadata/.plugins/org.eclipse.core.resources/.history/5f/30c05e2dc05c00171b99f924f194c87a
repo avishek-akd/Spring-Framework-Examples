@@ -1,0 +1,14 @@
+package com.avishek.spring;
+
+public class TestBean {
+
+	
+	DataSource oracleDataSource;
+	
+	DataSource mySqlDataSource;
+	
+	public void show(){
+		System.out.println(oracleDataSource);
+		System.out.println(mySqlDataSource);
+	}
+}

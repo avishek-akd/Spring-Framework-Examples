@@ -1,0 +1,16 @@
+package com.avishek.spring;
+
+import java.util.List;
+
+public interface AccountDAO {
+	
+	public AccountTO getCustomerByCid(int cid);
+	public AccountTO getCustomerByEmail(String email);
+	
+	public List<AccountTO> getAllCustomers();
+	public List<AccountTO> getCustomersByCity(String city);
+	
+	public int getCustomersCount();
+	public String getCustomerCityByEmail(String email);
+	public long getCustomerPhoneByEmail(String email);
+}

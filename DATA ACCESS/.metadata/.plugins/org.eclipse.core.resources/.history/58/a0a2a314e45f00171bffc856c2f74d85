@@ -1,0 +1,33 @@
+package com.avishek.spring;
+
+import javax.sql.DataSource;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class Lab57 {
+	
+	public static void main(String[] args) {
+
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+		
+		System.out.println("----------Spring Container Is Ready----------\n");
+		
+		
+		CustomerTO cto1  = new CustomerTO(106, "DD", "d@gmail.com", 44444, "Kol");
+		
+		CustomerTO cto2  = new CustomerTO(104, "EE", "e@gmail.com", 22222, "Ctc");
+		
+		
+		CustomerDAO cdao = (CustomerDAO) ctx.getBean("cdao");
+		
+		cdao.addCustomer(cto1);
+		cdao.updateustomer(cto2);
+		cdao.deleteCustomer(103);
+		
+		
+		
+	}
+}
+
+

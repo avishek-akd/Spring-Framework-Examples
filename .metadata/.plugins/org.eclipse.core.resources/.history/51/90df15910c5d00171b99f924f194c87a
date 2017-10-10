@@ -1,0 +1,6 @@
+# This is the  messages_hi.properties file
+wiki=\u0B09\u0B07\u0B15\u0B3F\u0B2A\u0B3F\u0B21\u0B3C\u0B3F\u0B06
+error.required={0} is Required (IN ODIA)
+error.min={0} must be min :-{1} char (IN ODIA)
+error.max={0} must be max :-{1} char (IN ODIA)
+error.range={0} must be between: {1} to {2} (IN ODIA)

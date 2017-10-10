@@ -1,0 +1,87 @@
+package com.avishek.spring;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
+
+import javax.annotation.Resource;
+
+public class Customer {
+	private int cid;
+	private String cname;
+	private String email;
+	private Long phone;
+	
+		@Resource
+	private List<String> emails;
+		@Resource
+	private Set<Long> phones;
+		@Resource(name="references")
+	private Map<String, Long> refs;
+		@Resource
+	private Properties myprops;
+		
+	private Address add;
+		@Resource
+	private List<Account> acc;
+	
+	public Customer(int cid, String cname, String email, Long phone) {
+		this.cid = cid;
+		this.cname = cname;
+		this.email = email;
+		this.phone = phone;
+	}
+	
+	
+
+	public void setEmails(List<String> emails) {
+		this.emails = emails;
+	}
+
+
+
+	public void setPhones(Set<Long> phones) {
+		this.phones = phones;
+	}
+
+
+
+	public void setRefs(Map<String, Long> refs) {
+		this.refs = refs;
+	}
+
+
+	
+
+	public void setMyprops(Properties myprops) {
+		this.myprops = myprops;
+	}
+
+	
+
+	public void setAdd(Address add) {
+		this.add = add;
+	}
+
+	
+
+	public void setAcc(List<Account> acc) {
+		this.acc = acc;
+	}
+
+
+
+	public void show(){
+		System.out.println(cid + "\t" + cname + "\t" + email+ "\t" +phone);
+		
+		System.out.println(emails);
+		System.out.println(phones);
+		System.out.println(refs);
+		System.out.println(myprops);
+		System.out.println(add);
+		System.out.println(acc);
+		
+		
+	}
+}

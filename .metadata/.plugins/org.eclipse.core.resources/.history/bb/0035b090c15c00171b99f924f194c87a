@@ -1,0 +1,75 @@
+package com.avishek.spring;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.env.Environment;
+
+@Configuration
+@PropertySource(value={"common.properties","oracle.properties","mySql.properties"})
+public class SpringConfig {
+
+	@Autowired
+	Environment env ;
+	
+	@Value("${password}")
+	private String password;
+	
+	@Value("${min}")
+	private int min;
+	
+	@Value("${max}")
+	private int max;
+	
+	@Value("${timeout}")
+	private int timeout;
+	
+	@Bean(name="mySqlDS")
+	public DataSource mySqlDataSource(){
+		DataSource ds = new DataSource();
+		
+		// 1st Approach
+		ds.setDriverClass(env.getProperty("mysql.dc"));
+		ds.setDriverClass(env.getProperty("mysql.url"));
+		ds.setDriverClass(env.getProperty("mysql.un"));
+		
+		//2nd Approach
+		ds.setMin(min);
+		ds.setPassword(password);
+		ds.setMax(max);
+		ds.setTimeout(timeout);
+		
+		return ds;
+	}
+	
+	@Bean(name="oracleDS")
+	public DataSource oracleDataSource(){
+		DataSource ds = new DataSource();
+		
+		// 1st Approach
+		ds.setDriverClass(env.getProperty("mysql.dc"));
+		ds.setDriverClass(env.getProperty("mysql.url"));
+		ds.setDriverClass(env.getProperty("mysql.un"));
+		
+		//2nd Approach
+		ds.setMin(min);
+		ds.setPassword(password);
+		ds.setMax(max);
+		ds.setTimeout(timeout);
+		
+		return ds;
+	}
+	
+	@Bean(name="test")
+	public TestBean test(){
+		return new TestBean();
+	}
+	
+	@Bean
+	public PropertySourcesPlaceholderConfigurer placeholderConfigurer(){
+		return new PropertySourcesPlaceholderConfigurer();
+		}
+}

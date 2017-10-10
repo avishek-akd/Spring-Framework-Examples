@@ -1,0 +1,73 @@
+package com.avishek.spring;
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.HibernateTemplate;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
+
+
+public class HibernateCustomerDAO implements CustomerDAO {
+
+	@Autowired
+	HibernateTemplate hTemp;
+	
+	
+
+
+	public CustomerTO getCustomerByEmail(String email) {
+		String hql = "from Customer cust where cust.email=?";
+		return null;
+	}
+
+
+	@Override
+	public List<CustomerTO> getAllCustomers() {
+		String hql = "from Customer cust";
+		return null;
+	}
+
+
+	@Override
+	public List<CustomerTO> getCustomersByCity(String city) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public int getCustomersCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public int getCustomersCountByCity() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public String getCustomerCityByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public long getCustomerPhoneByEmail(String email) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
+
+
+}

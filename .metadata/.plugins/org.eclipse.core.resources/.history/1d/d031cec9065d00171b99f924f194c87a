@@ -1,0 +1,29 @@
+package com.avishek.spring;
+
+import java.util.Locale;
+
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Required;
+import org.springframework.context.ApplicationContext;
+
+
+
+public class TestBean {
+
+	
+	@Autowired
+	ApplicationContext ctx;
+	public void showEnglish(){
+				
+		
+	}
+	
+	public void showHindi(){
+		String m1 = ctx.getMessage("username.required",null,new Locale("hi"));
+		System.out.println(m1);		
+		
+	}
+}

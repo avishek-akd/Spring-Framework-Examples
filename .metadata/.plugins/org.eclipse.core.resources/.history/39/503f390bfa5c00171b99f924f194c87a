@@ -1,0 +1,21 @@
+package com.avishek.spring;
+
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MyListener3{
+
+	
+	//Listen Only WorkshopEvent
+	
+	
+	@EventListener
+	public void handleEvent(WorkshopEvent we) {
+		System.out.println("ML3-->WorkshopEvent");
+			WorkshopTO wto = we.getWto();
+			System.out.println(wto);
+	}
+}

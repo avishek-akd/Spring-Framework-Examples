@@ -1,0 +1,17 @@
+package com.avishek.spring;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+
+@Aspect
+public class SecurityService {
+	
+	@Pointcut(value="execution(* com.avishek.spring.AccountService.my*(..))")
+	public void PC1(){}
+	
+	@Before("PC1()")
+	public void verifyUser(){
+		System.out.println("SecurityService-verifyUser()");
+	}
+}

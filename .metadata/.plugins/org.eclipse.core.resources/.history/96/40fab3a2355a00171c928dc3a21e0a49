@@ -1,0 +1,20 @@
+package com.avishek.spring;
+
+public class Customer {
+	private int cid;
+	private String cname;
+	private String email;
+	private Long phones;
+	
+	
+	public Customer(int cid, String cname, String email, Long phones) {
+		this.cid = cid;
+		this.cname = cname;
+		this.email = email;
+		this.phones = phones;
+	}
+	
+	public void show(){
+		System.out.println(cid + "\t" + cname + "\t" + email+ "\t" +phones);
+	}
+}

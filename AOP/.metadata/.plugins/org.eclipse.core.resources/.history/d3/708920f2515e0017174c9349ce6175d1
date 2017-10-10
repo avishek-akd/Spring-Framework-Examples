@@ -1,0 +1,7 @@
+package com.avishek.spring;
+
+import org.springframework.aop.AfterReturningAdvice;
+
+public class MRAdvice implements AfterReturningAdvice{
+
+}

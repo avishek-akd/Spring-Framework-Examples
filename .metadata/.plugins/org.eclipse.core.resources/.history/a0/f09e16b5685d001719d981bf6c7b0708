@@ -1,0 +1,28 @@
+package com.avishek.spring;
+
+
+
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.*;
+
+public class Lab42 {
+	public static void main(String[] args) {
+		
+	
+		Resource res = new ClassPathResource("spring.xml");
+		BeanFactory factory = new XmlBeanFactory(res);
+		
+	
+		System.out.println("----------Spring Container Is Ready----------");
+	
+		Student stu = (Student)factory.getBean("stu");
+		stu.getSname();
+		System.out.println(stu.getSname());
+		System.out.println(stu.getPhone());
+		System.out.println(stu.getEmails());
+		
+		System.out.println("----------Spring Container Is Going To Shut Down----------");
+		
+	}
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+    http://www.springframework.org/schema/context  
+    http://www.springframework.org/schema/context/spring-context-4.2.xsd">  
+    
+    <context:annotation-config/>
+    
+    <bean name="asTarget" class="com.avishek.spring.AccountService"/>
+	<bean name="csTarget" class="com.avishek.spring.CustomerServiceImpl"/>
+	
+	<bean name="ss" class="com.avishek.spring.SecurityService"/>
+	    
+	<bean name="mba" class="com.avishek.spring.MBAdvice"/>
+	    
+	<bean name="asProxy" class="org.springframework.aop.framework.ProxyFactory">
+  		<property name="targetClass" value="com.avishek.spring.AccountService"/>
+  		<property name="target" value=""/>
+  		<property name="targetClass" value="asTarget"/>
+  		<property name="interceptorNames">
+  			<list>
+  				<value>mba</value>
+  			</list>
+  		</property>
+	</bean>
+		
+      
+</beans>

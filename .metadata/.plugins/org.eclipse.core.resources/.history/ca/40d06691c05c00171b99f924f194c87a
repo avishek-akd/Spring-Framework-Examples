@@ -1,0 +1,18 @@
+package com.avishek.spring;
+
+public class TestBean {
+
+	
+	DataSource oracleDataSource;
+	
+	DataSource mySqlDataSource;
+	
+	public void show(){
+		
+		System.out.println("===Oracle===\n");
+		System.out.println(oracleDataSource);
+		
+		System.out.println("===Mysql===\n");
+		System.out.println(mySqlDataSource);
+	}
+}

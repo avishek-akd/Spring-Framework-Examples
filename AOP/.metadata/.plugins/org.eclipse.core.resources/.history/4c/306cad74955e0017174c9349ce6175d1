@@ -1,0 +1,38 @@
+package com.avishek.spring;
+
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+
+@Aspect
+public class LogService {
+
+	
+	@Pointcut(value="execution(* com.avishek.spring.AccountService.my*(..))")
+	public void PC1(){}
+	
+	@Pointcut(value="execution(* com.avishek.spring.CustomerService.add*(..))")
+	public void PC2(){}
+	
+		@Before("PC1() || PC2()")
+		public void logBefore(){
+			System.out.println("LogService-logBefore()");
+		}
+		
+		@AfterReturning("PC1() || PC2()")
+		public void logReturning(){
+			System.out.println("LogService-logReturning()");
+		}
+		
+		@AfterThrowing("PC1() || PC2()")
+		public void logThrowing(){
+			System.out.println("LogService-logThrowing()");
+		}
+		
+		public void logOk("PC1() || PC2()"){
+			System.out.println("LogService-logOk()");
+		}
+		
+}

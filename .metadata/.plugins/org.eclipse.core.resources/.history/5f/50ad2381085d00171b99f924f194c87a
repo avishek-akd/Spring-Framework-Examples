@@ -1,0 +1,31 @@
+package com.avishek.spring;
+
+import java.util.Locale;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+
+
+
+public class TestBean {
+
+	
+	@Autowired
+	ApplicationContext ctx;
+	public void showEnglish(){
+		String m1 = ctx.getMessage("wiki",null,"Not Found showEnglish()->m1",null);
+		System.out.println(m1);		
+		
+	}
+	
+	public void showHindi(){
+		String m1 = ctx.getMessage("wiki",null,"Not Found showHindi()->m1",new Locale("hi"));
+		System.out.println(m1);		
+		
+	}
+
+	public void showOdia() {
+		String m1 = ctx.getMessage("wiki",null,"Not Found showHindi()->m1",new Locale("hi"));
+		System.out.println(m1);		
+		
+	}
+}

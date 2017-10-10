@@ -1,0 +1,7 @@
+create table Customer(
+	cid int PRIMARY KEY,
+	cname char(20),
+	email char(20),
+	phone long,
+	city char(20)
+	);

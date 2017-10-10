@@ -1,0 +1,16 @@
+package com.avishek.spring;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+
+public class SpringConfig {
+	
+	@Bean
+	public void oracleDS(){
+		DriverManagerDataSource ds = new DriverManagerDataSource();
+		ds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+		ds.setUrl("jdbs:oracle:thin:@localhost:1521:XE");
+		ds.setUsername("system");
+		ds.setPassword("system");
+	}
+}

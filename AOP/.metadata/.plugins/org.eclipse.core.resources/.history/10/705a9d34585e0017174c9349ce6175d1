@@ -1,0 +1,14 @@
+package com.avishek.spring;
+
+import java.lang.reflect.Method;
+
+import org.springframework.aop.AfterReturningAdvice;
+
+public class MRAdvice implements AfterReturningAdvice {
+
+	
+	public void afterReturning(Object rv , Method method, Object[] args, Object target) throws Throwable {
+		
+	}
+
+}

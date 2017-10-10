@@ -1,0 +1,19 @@
+package com.avishek.spring;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class SpringConfig {
+
+	public Student createStudent(){
+		Student stu = new Student();
+		stu.setSname("Avishek");
+		stu.setPhone("111111");
+		
+		
+		return stu;
+	}
+	
+	
+}

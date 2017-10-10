@@ -1,0 +1,36 @@
+package com.avishek.spring;
+
+
+
+import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+
+public class Lab64 {
+	
+	public static void main(String[] args) {
+
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+		
+		System.out.println("----------Spring Container Is Ready----------\n");
+		
+		CustomerDAO cdao = (CustomerDAO) ctx.getBean("cdao");
+		
+		List<CustomerTO> ctolist = cdao.getAllCustomers();
+		for (CustomerTO customerTO : ctolist) {
+			System.out.println(customerTO);
+		}
+		
+		CustomerTO cto = cdao.getCustomerByEmail("b@cc");
+		System.out.println(cto);
+		
+		ctolist = cdao.getCustomersByCity("Bbsr");
+		for (CustomerTO customerTO : ctolist) {
+			System.out.println(customerTO);
+		}
+	}
+}
+
+

@@ -1,0 +1,15 @@
+package com.avishek.spring;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+@Aspect
+public class SecurityService {
+	
+	
+	
+	@Before("PC1()")
+	public void verifyUser(){
+		System.out.println("SecurityService-verifyUser()");
+	}
+}

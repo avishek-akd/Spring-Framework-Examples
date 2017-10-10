@@ -1,0 +1,28 @@
+package com.avishek.spring;
+
+import java.lang.reflect.Method;
+
+import org.springframework.aop.MethodBeforeAdvice;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+
+@Aspect
+public class MBAdvice implements MethodBeforeAdvice {
+
+	@Autowired
+	SecurityService ss;
+	
+	@Autowired
+	TxServices ts;
+	
+	@Autowired
+	LogService ls;
+	
+	public void before(Method method, Object[] args, Object target) throws Throwable {
+		ss.verifyUser();
+		ls.logBefore();
+		ts.begin();
+		
+	}
+
+}

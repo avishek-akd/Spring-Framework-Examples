@@ -1,0 +1,16 @@
+package com.avishek.spring;
+
+public class AccountService {
+	
+	public void getBal(){
+		System.out.println("AccountService-getBal()");
+	}
+	
+	public void myDeposit(){
+		System.out.println("AccountService-myDeposit()");
+	}
+	
+	public void myWithdraw(){
+		System.out.println("AccountService-myWithdraw()");
+	}
+}
